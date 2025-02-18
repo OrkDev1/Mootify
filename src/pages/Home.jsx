@@ -203,7 +203,7 @@ function Home(props) {
               </div>
               <EmotesSliderHorizontal alertHandler={setShowAlert} />
             </div>
-            <Menu />
+            <Menu database={props.database} user={userID} />
           </div>
         </IonContent>
       </IonPage>

@@ -1,6 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
 import OneSignal from "onesignal-cordova-plugin";
-
 //Password K8tBfODKlSqOUyKj
 //Token sbp_e17f25c79ed1ad01db8ac0f51b06ea46d6fb3b83
 export const CreateDatabaseClient = () => {
@@ -8,6 +7,17 @@ export const CreateDatabaseClient = () => {
     "https://duanqznzrlesngohyrci.supabase.co",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1YW5xem56cmxlc25nb2h5cmNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgyNTM1OTQsImV4cCI6MjA1MzgyOTU5NH0.2kaAvDYminYseGP9lIxuN11wwWRcbgpe3wMn1FEtwPM"
   );
+};
+
+export const refreshMood = async (client, userId) => {
+  const { data, error } = await client.from("users").select("*").eq("id", userId).single();
+  console.log(data);
+  if (data.update == 1) {
+    await client.from("users").update({ update: 0 }).eq("id", userId);
+    return { status: true, mood: data.mood, message: data.message };
+  } else {
+    return { status: false };
+  }
 };
 
 export const getUserFriends = async (client, userId) => {
@@ -28,7 +38,7 @@ export const getUserFriends = async (client, userId) => {
 };
 
 export const UpdateDatabseValue = async (client, id, mood, message) => {
-  await client.from("users").upsert({ id: id, mood: mood, message: message }).select();
+  await client.from("users").upsert({ id: id, mood: mood, message: message, update: 1 }).select();
 };
 
 export const AddFriend = async (client, id, friend) => {
