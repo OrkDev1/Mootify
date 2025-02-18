@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005342121136",
+    "project_id": "moodwatch-adba6",
+    "storage_bucket": "moodwatch-adba6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005342121136:android:14c49a47bcf8d385f8ef75",
+        "android_client_info": {
+          "package_name": "ionic.loversbracelet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJVl9HqyjGBWLn7lVpP_JwBZPwnaYPVYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

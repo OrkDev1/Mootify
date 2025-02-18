@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@onesignal/node-onesignal": "https://cdn.skypack.dev/@onesignal/node-onesignal"
+  }
+}

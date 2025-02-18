@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "CustomFont";
+  src: url("../Fonts/BalooChettan2-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.textContainer {
+  font-family: "CustomFont", cursive;
+  font-weight: 600;
+  font-size: 3.5rem;
+  text-shadow: -15px 5px 20px #ced0d3;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #c084fc;
+  text-shadow: 4px 4px 0px #ffb650, 8px 8px 0px #ffd662, 12px 12px 0px #ff80bf, 15px 15px 0px #ef5097, 19px 19px 0px #90b1e0;
+}
+
+.no-ripple {
+  --ripple-color: transparent;
+}
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
+  overflow: hidden;
+}
