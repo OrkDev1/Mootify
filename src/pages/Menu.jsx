@@ -11,11 +11,13 @@ export default function Menu(props) {
   const [dataStatus, setDataStatus] = useState(true);
   const [inputValue, setInputValue] = useState(true);
   const [refreshStatus, setRefreshStatus] = useState(false);
+  const [moodData, setMoodData] = useState(null);
   async function handleRefresh() {
     var returnValue = await refreshMood(props.database, props.user);
     console.log(returnValue);
     if (returnValue.status) {
       setRefreshStatus(true);
+      setMoodData(returnValue);
     }
   }
   return (
@@ -50,8 +52,10 @@ export default function Menu(props) {
             role: "confirm",
             handler: async () => {
               setRefreshStatus(false);
-              const device = await initBLE();
-              await writeData(device.deviceId, data.mood + "&" + data.message);
+              await initBLE().then(async (data) => {
+                console.log(data);
+                await writeData(data.deviceId, moodData.mood + "&" + moodData.message);
+              });
             },
           },
         ]}
